@@ -1,0 +1,11 @@
+.gradientText {
+  background: linear-gradient(90deg, #00C853,  #009688);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: var(--font-nunito);
+  /* transform: rotateY(25deg); */
+}

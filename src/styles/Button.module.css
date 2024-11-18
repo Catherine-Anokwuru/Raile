@@ -1,0 +1,45 @@
+/* src/components/Button.module.css */
+
+.button {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+  display: flex;
+}
+
+/* Variants */
+.primary {
+  background-color: #00C853;
+  color: #000;
+}
+
+.secondary {
+  background-color: #eaeaea;
+  color: #212121;
+}
+
+/* Sizes */
+.small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.medium {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.large {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.125rem;
+}
+
+/* Hover effects for interactive states */
+.button:hover {
+  opacity: 0.9;
+}

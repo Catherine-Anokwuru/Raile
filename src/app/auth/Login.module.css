@@ -1,0 +1,139 @@
+.container {
+  width: 100%;
+  padding: 1rem;
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.logobox {
+  display: none;
+}
+
+.box {
+  width: 100%;
+  /* margin: auto; */
+}
+
+.heading {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  background-color: #35323d96;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.signInButton {
+  background-color: #00c853;
+  color: #212121;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signInButton:hover {
+  opacity: 0.9;
+}
+
+.or {
+  color: #f1f1f1;
+  font-size: 0.9rem;
+  margin: 1rem auto;
+  font-weight: 500;
+}
+
+.gIcon {
+  height: auto;
+  width: 15px;
+}
+
+.forgotPassword {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.rememberMeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.rememberMeLabel {
+  margin-left: 0.5rem;
+}
+
+.newTo {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.signUpLink {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signUpLink:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    background: url("/images/bg-auth.webp") center/cover no-repeat;
+    max-width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+  .logo {
+    display: none;
+  }
+  .box {
+    margin: 0;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    max-width: 400px;
+  }
+  .logobox {
+    align-self: flex-start;
+    display: flex;
+    position: absolute;
+    left: 5%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 3rem 90px;
+  }
+}
