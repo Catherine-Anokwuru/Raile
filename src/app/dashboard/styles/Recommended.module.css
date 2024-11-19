@@ -1,0 +1,63 @@
+.recommended {
+  padding: 16px;
+}
+
+.recommended h2 {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.textBox {
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textBox button {
+  background: transparent;
+  border: 0px;
+  font-size: 14px;
+  align-items: center;
+  display: flex;
+  gap: 6px;
+}
+
+.textBox button:hover{
+  color: #00C853
+}
+
+.movies {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.movie {
+  min-width: 230px;
+  width: 230px;
+  height: 180px;
+  margin-right: 14px;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .recommended {
+    padding-inline: 3rem;
+  }
+
+  .recommended h2 {
+    font-size: 24px;
+  }
+
+  .textBox button {
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .textBox {
+    justify-content: flex-start;
+    gap: 3rem;
+  }
+}

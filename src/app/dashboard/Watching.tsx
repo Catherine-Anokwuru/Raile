@@ -2,17 +2,13 @@ import React from "react";
 import styles from "./styles/Recommended.module.css";
 import sman from "../../../public/images/sman.webp";
 import Image from "next/image";
-import { inter, ubuntu } from "app/fonts/fonts";
-import { IoIosArrowForward } from "react-icons/io";
+import { ubuntu } from "app/fonts/fonts";
 
-const Recommended: React.FC = () => {
+const Watching: React.FC = () => {
   return (
     <section className={styles.recommended}>
       <div className={styles.textBox}>
-        <h2 className={ubuntu.className}>Recommended</h2>
-        <button className={inter.className}>
-          See more <IoIosArrowForward />
-        </button>
+        <h2 className={ubuntu.className}>Continue Watching</h2>
       </div>
       <div className={`${styles.movies} no-scrollbar`}>
         <div className={styles.movie}>
@@ -55,4 +51,4 @@ const Recommended: React.FC = () => {
     </section>
   );
 };
-export default Recommended;
+export default Watching;

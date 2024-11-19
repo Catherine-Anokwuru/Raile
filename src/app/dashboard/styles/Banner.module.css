@@ -1,20 +1,16 @@
 .hero {
   position: relative;
-  height: 100vh;
+  height: 40vh;
   background-color: black;
 }
 
 .imageBox {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: block;
+  height: 100%;
 }
 
 .background1 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scaleX(-1);
-  position: relative;
+  display: none;
 }
 
 .background2 {
@@ -30,14 +26,31 @@
   left: 0;
   color: white;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 100%;
+  padding: 12px;
   background-image: linear-gradient(
     90deg,
-    #000000f4,
-    #000000ed,
+    #000000d7,
     #000000c2,
     #00000043
   );
+}
+.overlay h1 {
+  max-width: 80%;
+  bottom: 5%;
+  font-size: 30px;
+}
+.short {
+  font-size: 13px;
+  font-weight: 300;
+  color: #e7e2e2e4;
+  padding-bottom: 6px;
+}
+.description {
+  display: none;
 }
 
 .buttons {
@@ -45,9 +58,57 @@
   gap: 8px;
 }
 
-.playButton {
-  background-color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+@media screen and (min-width: 600px) {
+  .hero {
+    height: 100vh;
+  }
+  .overlay {
+    justify-content: center;
+  }
+  .description {
+    display: block;
+    font-size: 14px;
+    max-width: 60%;
+    text-align: justify;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+  .short {
+    padding-bottom: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .background1 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+    position: relative;
+  }
+  .imageBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .overlay {
+    background-image: linear-gradient(
+      90deg,
+      #000000f1,
+      #000000ed,
+      #000000c2,
+      #00000043
+    );
+    padding-inline: 3rem;
+  }
+  .overlay h1 {
+    font-size: 38px;
+  }
+  .description {
+    max-width: 50%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .description {
+    max-width: 40%;
+  }
 }

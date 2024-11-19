@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/Button.module.css";
 import clsx from "clsx"; // To combine CSS classes conditionally
+import { nunito } from "app/fonts/fonts";
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -21,7 +22,11 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={clsx(styles.button, styles[variant], styles[size])}
+      className={`${clsx(
+        styles.button,
+        styles[variant],
+        styles[size]
+      )} ${nunito.className}`}
       onClick={onClick}
       style={style}
       type={type ?? "button"}
