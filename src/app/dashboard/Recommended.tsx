@@ -4,15 +4,16 @@ import sman from "../../../public/images/sman.webp";
 import Image from "next/image";
 import { inter, ubuntu } from "app/fonts/fonts";
 import { IoIosArrowForward } from "react-icons/io";
+import Link from "next/link";
 
 const Recommended: React.FC = () => {
   return (
     <section className={styles.recommended}>
       <div className={styles.textBox}>
         <h2 className={ubuntu.className}>Recommended</h2>
-        <button className={inter.className}>
+        <Link href={'/more'} className={inter.className}>
           See more <IoIosArrowForward />
-        </button>
+        </Link>
       </div>
       <div className={`${styles.movies} no-scrollbar`}>
         <div className={styles.movie}>

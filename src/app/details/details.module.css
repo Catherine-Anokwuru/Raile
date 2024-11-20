@@ -1,0 +1,225 @@
+.hero {
+  position: relative;
+  height: 40vh;
+  background-color: black;
+}
+
+.imageBox {
+  display: block;
+  height: 100%;
+}
+
+.background2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 12px;
+  background-image: linear-gradient(
+    90deg,
+    #000000d7,
+    #000000c2,
+    #00000043
+  );
+  box-shadow: 0px -75px 50px #15141f inset;
+}
+.overlay h1 {
+  max-width: 80%;
+  bottom: 5%;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.short {
+  font-size: 13px;
+  font-weight: 300;
+  color: #e7e2e2e4;
+  padding-bottom: 8px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.descriptionBox {
+  padding: 12px;
+  box-shadow: 0px 15px 50px #15141f inset;
+}
+
+.descriptionBox h5 {
+  font-size: 16px;
+}
+
+.description {
+  font-size: 13px;
+  text-align: justify;
+  padding-top: 8px;
+  color: #fff;
+}
+
+.divider {
+  margin-left: 12px;
+  margin-right: 12px;
+  height: 0.5px;
+  background-color: #515151;
+  margin-bottom: 8px;
+  border-radius: 1rem;
+}
+
+.about {
+  padding: 12px;
+}
+
+.about p {
+  font-size: 13px;
+  color: #9d9b9b;
+  padding-bottom: 6px;
+}
+
+.about span {
+  color: #fff;
+}
+
+.about h5 {
+  font-size: 16px;
+  padding-bottom: 8px;
+}
+
+.more {
+  padding: 12px;
+}
+
+.more h5 {
+  font-size: 16px;
+  padding-bottom: 12px;
+}
+
+.moreGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.moreImg {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+#title {
+  font-size: 14px;
+  padding-top: 6px;
+}
+
+#title:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 600px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .moreImg {
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    height: 75vh;
+  }
+
+  .overlay {
+    background-image: linear-gradient(
+      90deg,
+      #000000ed,
+      #000000c2,
+      #00000043
+    );
+    padding-inline: 3rem;
+  }
+  .overlay h1 {
+    font-size: 30px;
+  }
+  .description {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 16px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  .descriptionBox {
+    padding-inline: 3rem;
+  }
+
+  .descriptionBox h5 {
+    font-size: 20px;
+  }
+
+  .short {
+    font-size: 14px;
+  }
+
+  .about {
+    padding-inline: 3rem;
+  }
+
+  .about p {
+    font-size: 16px;
+    color: #9d9b9b;
+    padding-bottom: 6px;
+  }
+
+  .about span {
+    color: #fff;
+  }
+
+  .about h5 {
+    font-size: 20px;
+    padding-bottom: 8px;
+  }
+
+  .more {
+    padding-inline: 3rem;
+  }
+
+  .more h5 {
+    font-size: 20px;
+    padding-bottom: 12px;
+  }
+
+  .moreImg {
+    height: 300px;
+  }
+
+  .divider {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  #title {
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+}

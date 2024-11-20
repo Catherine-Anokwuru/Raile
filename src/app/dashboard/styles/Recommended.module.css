@@ -4,7 +4,7 @@
 
 .recommended h2 {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .textBox {
@@ -23,8 +23,8 @@
   gap: 6px;
 }
 
-.textBox button:hover{
-  color: #00C853
+.textBox button:hover {
+  color: #00c853;
 }
 
 .movies {
@@ -48,7 +48,7 @@
   }
 
   .recommended h2 {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .textBox button {

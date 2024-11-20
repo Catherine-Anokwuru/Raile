@@ -6,6 +6,7 @@ import { ubuntu } from "app/fonts/fonts";
 import Logo from "components/Logo";
 
 const Login: React.FC = () => {
+
   return (
     <div className={styles.container}>
       <div className={styles.logobox}>

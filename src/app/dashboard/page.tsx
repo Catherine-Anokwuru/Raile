@@ -7,7 +7,7 @@ import Navbar from "components/Navbar";
 
 const Dashboard: React.FC = () => {
   return (
-    <div style={{ background: "#161616" }}>
+    <div style={{ background: "#15141F" }}>
       <Navbar />
       <Banner />
       <Recommended />
