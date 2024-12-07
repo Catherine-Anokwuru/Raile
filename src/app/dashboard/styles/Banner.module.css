@@ -33,9 +33,9 @@
   padding: 12px;
   background-image: linear-gradient(
     90deg,
-    #000000d7,
-    #000000c2,
-    #00000043
+    #000000b8,
+    #00000099,
+    #00000000
   );
 }
 .overlay h1 {
@@ -78,25 +78,30 @@
   }
 }
 @media screen and (min-width: 768px) {
+   .hero {
+    height: 100vh;
+  }
   .background1 {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scaleX(-1);
+    transform: scaleX(-1.001);
     position: relative;
   }
   .imageBox {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    height: 100%;
+    overflow-y: hidden;
   }
   .overlay {
     background-image: linear-gradient(
       90deg,
       #000000f1,
       #000000ed,
-      #000000c2,
-      #00000043
+      #00000047,
+      #00000000
     );
     padding-inline: 3rem;
   }

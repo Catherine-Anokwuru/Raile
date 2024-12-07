@@ -6,6 +6,7 @@ import { inter, ubuntu } from "app/fonts/fonts";
 import { IoIosArrowForward } from "react-icons/io";
 
 const WatchList: React.FC = () => {
+
   return (
     <section className={styles.recommended}>
       <div className={styles.textBox}>

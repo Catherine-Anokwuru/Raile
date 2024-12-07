@@ -1,42 +1,75 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import styles from "./styles/Banner.module.css";
 import Image from "next/image";
-import sman from "../../../public/images/sman.webp";
 import { nunito, ubuntu } from "app/fonts/fonts";
 import Button from "components/Button";
 import { IoPlay } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
+import { fetchTrendingMovie } from "./api/fetchTrendingMovie";
+import { handleAddToWatchlist } from "./api/AddToWatchlist";
+
+// interface BannerProps {
+//   id: number;
+//   title: string;
+//   backdrop_path: string;
+//   overview: string
+// }
 
 const Banner: React.FC = () => {
+  const [banner, setBanner] = useState({
+    id: 1,
+    title: "",
+    backdrop_path: "",
+    overview: "",
+    media_type: "",
+    release_date: "",
+  });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchTrendingMovie(1);
+        setBanner(data[2]);
+        console.log(data[2]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(banner);
+
   return (
     <section className={styles.hero}>
       <div className={styles.imageBox}>
         <Image
           className={styles.background1}
-          src={sman}
-          alt="banner"
-          // sizes="50%"
+          src={`https://image.tmdb.org/t/p/original/${banner.backdrop_path}`}
+          alt={banner.title}
+          width={100}
+          height={100}
+          sizes="100%"
+          priority
         />
         <Image
           className={styles.background2}
-          src={sman}
+          src={`https://image.tmdb.org/t/p/original/${banner.backdrop_path}`}
           alt="banner"
-          // sizes="50%"
+          sizes="100%"
+          width={100}
+          height={100}
+          priority
         />
       </div>
 
       <div className={styles.overlay}>
-        <h1 className={ubuntu.className}> The Beanie Bubble</h1>
+        <h1 className={ubuntu.className}> {banner.title}</h1>
         <p className={`${nunito.className} ${styles.short}`}>
-          2023 • Comedy • Movie
+          {banner.release_date.slice(0, 4)} • {banner.media_type}
         </p>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Eius sint, placeat dolore quisquam expedita tempora maiores,
-          dolorem impedit debitis nesciunt quidem quas cumque beatae
-          ducimus suscipit illum vero ea distinctio veritatis autem,
-          provident doloremque at.
-        </p>
+        <p className={styles.description}>{banner.overview}</p>
         <div className={styles.buttons}>
           <Button style={{ width: "50%", maxWidth: "120px" }}>
             <IoPlay /> Play
@@ -44,6 +77,15 @@ const Banner: React.FC = () => {
           <Button
             style={{ width: "50%", color: "#000", maxWidth: "120px" }}
             variant="secondary"
+            onClick={() =>
+              handleAddToWatchlist({
+                tmdbId: banner.id,
+                title: banner.title,
+                description: banner.overview,
+                genres: banner.media_type,
+                year: banner.release_date.slice(0, 4),
+              })
+            }
           >
             <FaPlus /> Watchlist
           </Button>

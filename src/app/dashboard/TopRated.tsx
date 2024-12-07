@@ -9,9 +9,11 @@ import React, {
 import styles from "./styles/Recommended.module.css";
 import Image from "next/image";
 import { ubuntu } from "app/fonts/fonts";
-import { fetchTrendingMovie } from "./api/fetchTrendingMovie";
 import { toast, ToastContainer } from "react-toastify";
 import { throttle } from "lodash";
+import { fetchTopRatedMovies } from "./api/fetchTopRated";
+import Link from "next/link";
+
 
 interface MovieProps {
   id: number;
@@ -19,7 +21,7 @@ interface MovieProps {
   poster_path: string;
 }
 
-const Recommended: React.FC = () => {
+const TopRated: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,7 +31,7 @@ const Recommended: React.FC = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const data = await fetchTrendingMovie(currentPage);
+        const data = await fetchTopRatedMovies(currentPage);
         setMovies((prevMovies) => [...prevMovies, ...data]);
         console.log(currentPage);
       } catch (error) {
@@ -79,10 +81,7 @@ const Recommended: React.FC = () => {
     <section className={styles.recommended}>
       <ToastContainer />
       <div className={styles.textBox}>
-        <h2 className={ubuntu.className}>Recommended</h2>
-        {/* <div className={inter.className}>
-          See more <IoIosArrowForward />
-        </div> */}
+        <h2 className={ubuntu.className}>Top Rated</h2>
       </div>
       <div
         className={`${styles.movies} no-scrollbar`}
@@ -96,26 +95,28 @@ const Recommended: React.FC = () => {
         }}
       >
         {movies.map((item, idx) => {
-          const { title, poster_path } = item;
+          const { title, poster_path, id } = item;
           return (
-            <div key={idx}>
-              <Image
-                style={{
-                  objectFit: "contain",
-                  borderRadius: "10px",
-                }}
-                // size={'100%'}
-                width={180}
-                height={250}
-                // src={`https://api.themoviedb.org/3/movie/${id}/images`}
-                src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-                alt={title}
-              />
-            </div>
+            <Link href={`/dashboard/${id}`} key={idx}>
+              <div>
+                <Image
+                  style={{
+                    objectFit: "contain",
+                    borderRadius: "10px",
+                  }}
+                  width={180}
+                  height={250}
+                  sizes="100%"
+                  // src={`https://api.themoviedb.org/3/movie/${id}/images`}
+                  src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+                  alt={title}
+                />
+              </div>
+            </Link>
           );
         })}
       </div>
     </section>
   );
 };
-export default Recommended;
+export default TopRated;

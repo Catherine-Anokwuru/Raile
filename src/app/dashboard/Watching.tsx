@@ -11,42 +11,31 @@ const Watching: React.FC = () => {
         <h2 className={ubuntu.className}>Continue Watching</h2>
       </div>
       <div className={`${styles.movies} no-scrollbar`}>
-        <div className={styles.movie}>
+        <div>
           <Image
             style={{
-              height: "100%",
-              width: "100%",
-              objectFit: "cover",
-              borderRadius: "8px",
+              objectFit: "contain",
+              borderRadius: "10px",
             }}
+            width={180}
+            height={250}
             src={sman}
             alt="movie"
           />
         </div>
-        <div className={styles.movie}>
+        <div>
           <Image
             style={{
-              height: "100%",
-              width: "100%",
-              objectFit: "cover",
-              borderRadius: "8px",
+              objectFit: "contain",
+              borderRadius: "10px",
             }}
+            width={180}
+            height={250}
             src={sman}
             alt="movie 2"
           />
         </div>
-        <div className={styles.movie}>
-          <Image
-            style={{
-              height: "100%",
-              width: "100%",
-              objectFit: "cover",
-              borderRadius: "8px",
-            }}
-            src={sman}
-            alt="movie 2"
-          />
-        </div>
+
       </div>
     </section>
   );

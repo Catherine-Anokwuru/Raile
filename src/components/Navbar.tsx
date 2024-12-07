@@ -7,10 +7,26 @@ import Link from "next/link";
 import { inter, ubuntu } from "app/fonts/fonts";
 import { FaUserCircle } from "react-icons/fa";
 import { ImSearch } from "react-icons/im";
-import { CgBolt } from "react-icons/cg";
 import { IoIosFlame } from "react-icons/io";
+import axios from "axios";
 
 const Navbar: React.FC = () => {
+  async function searchMovies(query: string) {
+    try {
+
+      let data = null;
+      const response = await axios.get(
+        ` https://api.themoviedb.org/3/search/movie
+?query=${query}&api_key=0e5fcb22f511960302347f8448364632 `
+      );
+        const movies = response.data.results;
+        return movies ;
+
+    } catch (error) {
+console.log(error);
+
+    }
+  }
   return (
     <nav className={styles.navBox}>
       <div className={styles.mobileNav}>
@@ -40,10 +56,7 @@ const Navbar: React.FC = () => {
             <Link href={"/dashboard"}>Home</Link>
           </li>
           <li>
-            <Link href={"/movies"}>Movies</Link>
-          </li>
-          <li>
-            <Link href={"/tv-shows"}>TV Shows</Link>
+            <Link href={"/movies"}>Recommended</Link>
           </li>
           <li>
             <Link href={"/watchlist"}>Watchlist</Link>
