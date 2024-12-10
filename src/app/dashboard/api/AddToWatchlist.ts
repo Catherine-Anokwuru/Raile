@@ -11,7 +11,7 @@ export const handleAddToWatchlist = async (
 ) => {
   const userId = localStorage.getItem("userId");
   try {
-    const response = await fetch(`watchlist/${userId}/add-movie`, {
+    const response = await fetch(`http://localhost:5000/watchlist/${userId}/add-movie`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

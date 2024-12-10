@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 import { FaBarsStaggered } from "react-icons/fa6";
 import Logo from "./Logo";
 import { IoSearchSharp } from "react-icons/io5";
@@ -8,24 +11,19 @@ import { inter, ubuntu } from "app/fonts/fonts";
 import { FaUserCircle } from "react-icons/fa";
 import { ImSearch } from "react-icons/im";
 import { IoIosFlame } from "react-icons/io";
-import axios from "axios";
 
 const Navbar: React.FC = () => {
-  async function searchMovies(query: string) {
+  const router = useRouter();
+  const [query, setQuery] = React.useState("");
+  async function searchMovies() {
     try {
-
-      let data = null;
-      const response = await axios.get(
-        ` https://api.themoviedb.org/3/search/movie
-?query=${query}&api_key=0e5fcb22f511960302347f8448364632 `
-      );
-        const movies = response.data.results;
-        return movies ;
-
+      router.push(`/search/${query}`);
     } catch (error) {
-console.log(error);
-
+      console.log(error);
     }
+  }
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setQuery(e.target.value);
   }
   return (
     <nav className={styles.navBox}>
@@ -34,22 +32,31 @@ console.log(error);
           <FaBarsStaggered fontSize={"1.2rem"} />
         </button>
         <Logo fontSize="1.5rem" />
-        <button>
+        <button type="button" onClick={searchMovies}>
           <IoSearchSharp fontSize={"1.5rem"} />
         </button>
       </div>
       <div className={styles.nav}>
         <Logo />
         <div className={styles.searchBar}>
-          <ImSearch
+          <button
+          type="button"
+            onClick={searchMovies}
             style={{
-              fontSize: "1.3rem",
+              fontSize: "1.2rem",
               borderRight: "1px solid #fff",
               paddingRight: "8px",
               height: "100%",
+              cursor: "pointer",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
-          <input type="text" />
+          >
+            <ImSearch
+            />
+          </button>
+          <input value={query} onChange={handleChange} type="text" />
         </div>
         <ul className={inter.className}>
           <li>
@@ -72,9 +79,7 @@ console.log(error);
               |
             </p>{" "}
             <button>
-              <FaUserCircle
-                style={{ color: "#00C853", fontSize: "1.5rem" }}
-              />
+              <FaUserCircle style={{ color: "#00C853", fontSize: "1.5rem" }} />
             </button>
             <div
               style={{

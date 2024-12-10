@@ -5,6 +5,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import styles from "./Login.module.css";
 import { ubuntu } from "app/fonts/fonts";
 import Logo from "components/Logo";
+import axios from "axios";
 
 const Signup: React.FC<{
   view: "login" | "register";
@@ -30,30 +31,21 @@ const Signup: React.FC<{
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch(
+      const response = await axios.post(
         "http://localhost:5000/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
+        formData
       );
 
-      if (!response.ok) {
-        throw new Error(
-          `Error: ${response.status} - ${response.statusText}`
-        );
+      if (response.status !== 201) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
 
-      console.log(response.headers.get("Authorization"));
+      console.log(response.headers);
 
-      const data = await response.json();
+      const data = await response.data;
       alert("Register successful:");
       setView("login");
       console.log(data);
-      
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
@@ -71,9 +63,7 @@ const Signup: React.FC<{
         <div className={styles.logo}>
           <Logo />
         </div>
-        <h2 className={`${styles.heading} ${ubuntu.className}`}>
-          Register
-        </h2>
+        <h2 className={`${styles.heading} ${ubuntu.className}`}>Register</h2>
 
         <form className={styles.form} onSubmit={handleRegister}>
           <input
@@ -126,9 +116,8 @@ const Signup: React.FC<{
           </div>
 
           <p style={{ fontSize: "12px", paddingBottom: "6px" }}>
-            password must be a minimum of eight characters with a
-            combination of uppercase, lowercase, numbers and special
-            characters
+            password must be a minimum of eight characters with a combination of
+            uppercase, lowercase, numbers and special characters
           </p>
 
           <button

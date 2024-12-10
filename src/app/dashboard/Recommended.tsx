@@ -9,7 +9,7 @@ import React, {
 import styles from "./styles/Recommended.module.css";
 import Image from "next/image";
 import { ubuntu } from "app/fonts/fonts";
-import { fetchTrendingMovie } from "./api/fetchTrendingMovie";
+import { fetchRecommendations } from "../dashboard/api/fetchRecommendations";
 import { toast, ToastContainer } from "react-toastify";
 import { throttle } from "lodash";
 
@@ -29,7 +29,7 @@ const Recommended: React.FC = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const data = await fetchTrendingMovie(currentPage);
+        const data = await fetchRecommendations();
         setMovies((prevMovies) => [...prevMovies, ...data]);
         console.log(currentPage);
       } catch (error) {

@@ -19,12 +19,11 @@ export const getWatchListMovies = async (
     let error: Error | null = null;
 
     const res = await fetch(
-      `http://localhost:4000/api/watchlist/${userId}`,
+      `http://localhost:5000/api/watchlist/${userId}`,
       {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json"
         },
       }
     );
@@ -35,7 +34,7 @@ export const getWatchListMovies = async (
     }
     error = new Error(data.message);
     return { watchlist, error };
-  } catch (error: any) {
+  } catch (error) {
     return { watchlist: null, error };
   }
 };
