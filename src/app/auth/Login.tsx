@@ -32,7 +32,7 @@ const Login: React.FC<{
     setLoading(true);
     try {
       const response = await fetch(
-        "https://movie-app-server-4bhs.onrender.com/auth/login",
+        "https://latin-adoree-raile-d2418ca2.koyeb.app/auth/login",
         {
           method: "POST",
           headers: {

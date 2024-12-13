@@ -32,7 +32,7 @@ const Signup: React.FC<{
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://movie-app-server-4bhs.onrender.com/auth/register",
+        "https://latin-adoree-raile-d2418ca2.koyeb.app/auth/register",
         formData
       );
 

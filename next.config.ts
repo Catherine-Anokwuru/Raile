@@ -20,11 +20,11 @@ const nextConfig: NextConfig = {
   //   return [
   //     {
   //       source: "/auth/:path*",
-  //       destination: "https://movie-app-server-4bhs.onrender.com/auth/:path*",
+  //       destination: "https://latin-adoree-raile-d2418ca2.koyeb.app/auth/:path*",
   //     },
   //     {
   //       source: "/:userId/:path*",
-  //       destination: "https://movie-app-server-4bhs.onrender.com/:userId/:path*",
+  //       destination: "https://latin-adoree-raile-d2418ca2.koyeb.app/:userId/:path*",
   //     },
   //   ];
   // },

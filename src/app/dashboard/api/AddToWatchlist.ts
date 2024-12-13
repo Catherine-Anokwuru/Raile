@@ -10,7 +10,7 @@ export const handleAddToWatchlist = async (payload: AddToWL) => {
   const userId = localStorage.getItem("userId");
   try {
     const response = await fetch(
-      `https://movie-app-server-4bhs.onrender.com/watchlist/${userId}/add-movie`,
+      `https://latin-adoree-raile-d2418ca2.koyeb.app/watchlist/${userId}/add-movie`,
       {
         method: "POST",
         headers: {
