@@ -7,7 +7,7 @@ import { IoPlay } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import Image from "next/image";
 
-const details: React.FC = ({title, release_date, overiew, poster_path, }) => {
+const details: React.FC = () => {
   return (
     <div style={{ background: "#15141F" }}>
       <section className={styles.hero}>

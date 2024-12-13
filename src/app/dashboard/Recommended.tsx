@@ -10,7 +10,7 @@ import styles from "./styles/Recommended.module.css";
 import Image from "next/image";
 import { ubuntu } from "app/fonts/fonts";
 import { fetchRecommendations } from "../dashboard/api/fetchRecommendations";
-import { toast, ToastContainer } from "react-toastify";
+// import { toast, ToastContainer } from "react-toastify";
 import { throttle } from "lodash";
 
 interface MovieProps {
@@ -32,7 +32,7 @@ const Recommended: React.FC = () => {
         const data = await fetchRecommendations();
         setMovies((prevMovies) => [...prevMovies, ...data]);
         console.log(data);
-        
+
       } catch (error) {
         console.log(error);
         setLoading(false);

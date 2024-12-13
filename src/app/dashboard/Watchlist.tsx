@@ -1,23 +1,27 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles/Recommended.module.css";
-import Image from "next/image";
-import { inter, ubuntu } from "app/fonts/fonts";
-import { IoIosArrowForward } from "react-icons/io";
-import Link from "next/link";
-import { toast } from "react-toastify";
-import { handleAddToWatchlist } from "./api/AddToWatchlist";
-import { fetchTrendingMovie } from "./api/fetchTrendingMovie";
 import { getWatchListMovies } from "./api/getWatchlist";
+
+interface IMovie {
+  imdbId: string;
+  title: string;
+  year: number;
+  rating?: string;
+  description?: string;
+  genre?: string[];
+  image: string;
+  imdb_link?: string;
+}
 
 const WatchList: React.FC = () => {
 
 
-    const [loading, setLoading] = useState(true);
-    const [movies, setMovies] = useState<MovieProps[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const containerRef = useRef<HTMLDivElement>(null);
+    const [, setLoading] = useState(true);
+    const [movies, setMovies] = useState<IMovie[]>([]);
+    // const [currentPage, ] = useState(1);
+    // const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
       const fetchData = async () => {
@@ -31,23 +35,14 @@ const WatchList: React.FC = () => {
           console.log(error);
           setLoading(false);
 
-          toast.error("Unable to fetch trending movies", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined,
-            theme: "light",
-          });
+
         } finally {
           setLoading(false);
         }
       };
 
       fetchData();
-    }, [currentPage]);
+    }, []);
   return (
     <section className={styles.recommended}>
       {/* <ToastContainer />
