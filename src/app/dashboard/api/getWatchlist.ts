@@ -17,7 +17,7 @@ export const getWatchListMovies = async () => {
     let error: Error | null = null;
 
     const res = await fetch(
-      `https://latin-adoree-raile-d2418ca2.koyeb.app/api/watchlist/${userId}`,
+      `https://latin-adoree-raile-d2418ca2.koyeb.app/watchlist/${userId}`,
       {
         method: "GET",
         headers: {
