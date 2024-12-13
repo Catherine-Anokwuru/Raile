@@ -31,7 +31,7 @@ const Banner: React.FC = () => {
       try {
         const data = await fetchTrendingMovie(1);
         setBanner(data[2]);
-        console.log(data[2]);
+        // console.log(data[2]);
       } catch (error) {
         console.log(error);
       }
@@ -39,7 +39,7 @@ const Banner: React.FC = () => {
 
     fetchData();
   }, []);
-  console.log(banner);
+  // console.log(banner);
 
   return (
     <section className={styles.hero}>

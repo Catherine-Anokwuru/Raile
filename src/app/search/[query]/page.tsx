@@ -12,6 +12,7 @@ import Link from "next/link";
 const SearchPage = () => {
   const params = useParams();
   const query = params.query as string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +26,7 @@ const SearchPage = () => {
         console.log(error);
         setLoading(false);
 
-        toast.error("Unable to fetch trending movies", {
+        toast.error("Unable to fetch movies", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -41,7 +42,7 @@ const SearchPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [query]);
 
   if (loading) {
     return <div>Loading...</div>;

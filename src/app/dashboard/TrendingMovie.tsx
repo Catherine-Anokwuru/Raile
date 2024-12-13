@@ -32,7 +32,6 @@ const TrendingMovie: React.FC = () => {
       try {
         const data = await fetchTrendingMovie(currentPage);
         setMovies((prevMovies) => [...prevMovies, ...data]);
-        console.log(currentPage);
       } catch (error) {
         console.log(error);
         setLoading(false);
@@ -79,7 +78,7 @@ const TrendingMovie: React.FC = () => {
   return (
     <section className={styles.recommended}>
       <ToastContainer />
-      <div className={styles.textBox}>
+      {movies ? <> <div className={styles.textBox}>
         <h2 className={ubuntu.className}>Trending</h2>
       </div>
       <div
@@ -114,7 +113,8 @@ const TrendingMovie: React.FC = () => {
             </Link>
           );
         })}
-      </div>
+      </div></> : <></>}
+
     </section>
   );
 };

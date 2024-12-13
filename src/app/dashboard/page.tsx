@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "./Banner";
 import WatchList from "./Watchlist";
-import Watching from "./Watching";
+// import Watching from "./Watching";
 import Navbar from "components/Navbar";
 import TrendingMovie from "./TrendingMovie";
 import Recommended from "./Recommended";
@@ -14,7 +14,7 @@ const Dashboard: React.FC = () => {
       <Navbar />
       <Banner />
       <TrendingMovie />
-      <Watching />
+      {/* <Watching /> */}
       <Recommended />
       <WatchList />
       <TopRated />

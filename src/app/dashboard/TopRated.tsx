@@ -33,12 +33,11 @@ const TopRated: React.FC = () => {
       try {
         const data = await fetchTopRatedMovies(currentPage);
         setMovies((prevMovies) => [...prevMovies, ...data]);
-        console.log(currentPage);
       } catch (error) {
         console.log(error);
         setLoading(false);
 
-        toast.error("Unable to fetch trending movies", {
+        toast.error("Unable to fetch top-rated movies", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,

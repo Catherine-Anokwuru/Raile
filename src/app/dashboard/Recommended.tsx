@@ -31,21 +31,22 @@ const Recommended: React.FC = () => {
       try {
         const data = await fetchRecommendations();
         setMovies((prevMovies) => [...prevMovies, ...data]);
-        console.log(currentPage);
+        console.log(data);
+        
       } catch (error) {
         console.log(error);
         setLoading(false);
 
-        toast.error("Unable to fetch trending movies", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
+        // toast.error("Unable to fetch recommended movies", {
+        //   position: "top-center",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: false,
+        //   draggable: false,
+        //   progress: undefined,
+        //   theme: "light",
+        // });
       } finally {
         setLoading(false);
       }
@@ -77,44 +78,51 @@ const Recommended: React.FC = () => {
 
   return (
     <section className={styles.recommended}>
-      <ToastContainer />
-      <div className={styles.textBox}>
-        <h2 className={ubuntu.className}>Recommended</h2>
-        {/* <div className={inter.className}>
+      {/* <ToastContainer /> */}
+      {movies ? (
+        <>
+          {" "}
+          <div className={styles.textBox}>
+            <h2 className={ubuntu.className}>Recommended</h2>
+            {/* <div className={inter.className}>
           See more <IoIosArrowForward />
         </div> */}
-      </div>
-      <div
-        className={`${styles.movies} no-scrollbar`}
-        ref={containerRef}
-        onScroll={handleScroll}
-        style={{
-          display: "flex",
-          overflowX: "auto",
-          whiteSpace: "nowrap",
-          scrollbarWidth: "none",
-        }}
-      >
-        {movies.map((item, idx) => {
-          const { title, poster_path } = item;
-          return (
-            <div key={idx}>
-              <Image
-                style={{
-                  objectFit: "contain",
-                  borderRadius: "10px",
-                }}
-                // size={'100%'}
-                width={180}
-                height={250}
-                // src={`https://api.themoviedb.org/3/movie/${id}/images`}
-                src={`https://image.tmdb.org/t/p/original/${poster_path}`}
-                alt={title}
-              />
-            </div>
-          );
-        })}
-      </div>
+          </div>
+          <div
+            className={`${styles.movies} no-scrollbar`}
+            ref={containerRef}
+            onScroll={handleScroll}
+            style={{
+              display: "flex",
+              overflowX: "auto",
+              whiteSpace: "nowrap",
+              scrollbarWidth: "none",
+            }}
+          >
+            {movies.map((item, idx) => {
+              const { title, poster_path } = item;
+              return (
+                <div key={idx}>
+                  <Image
+                    style={{
+                      objectFit: "contain",
+                      borderRadius: "10px",
+                    }}
+                    // size={'100%'}
+                    width={180}
+                    height={250}
+                    // src={`https://api.themoviedb.org/3/movie/${id}/images`}
+                    src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+                    alt={title}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </section>
   );
 };

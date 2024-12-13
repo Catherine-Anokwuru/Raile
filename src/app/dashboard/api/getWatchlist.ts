@@ -9,9 +9,7 @@ interface IMovie {
   imdb_link?: string;
 }
 
-export const getWatchListMovies = async (
-
-) => {
+export const getWatchListMovies = async () => {
   const userId = localStorage.getItem("userId");
 
   try {
@@ -19,11 +17,11 @@ export const getWatchListMovies = async (
     let error: Error | null = null;
 
     const res = await fetch(
-      `http://localhost:5000/api/watchlist/${userId}`,
+      `https://movie-app-server-4bhs.onrender.com/api/watchlist/${userId}`,
       {
         method: "GET",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
       }
     );

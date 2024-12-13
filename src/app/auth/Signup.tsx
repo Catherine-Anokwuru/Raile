@@ -32,12 +32,14 @@ const Signup: React.FC<{
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/register",
+        "https://movie-app-server-4bhs.onrender.com/auth/register",
         formData
       );
 
       if (response.status !== 201) {
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        throw new Error(
+          `Error: ${response.status} - ${response.statusText}`
+        );
       }
 
       console.log(response.headers);
@@ -63,7 +65,9 @@ const Signup: React.FC<{
         <div className={styles.logo}>
           <Logo />
         </div>
-        <h2 className={`${styles.heading} ${ubuntu.className}`}>Register</h2>
+        <h2 className={`${styles.heading} ${ubuntu.className}`}>
+          Register
+        </h2>
 
         <form className={styles.form} onSubmit={handleRegister}>
           <input
@@ -116,8 +120,9 @@ const Signup: React.FC<{
           </div>
 
           <p style={{ fontSize: "12px", paddingBottom: "6px" }}>
-            password must be a minimum of eight characters with a combination of
-            uppercase, lowercase, numbers and special characters
+            password must be a minimum of eight characters with a
+            combination of uppercase, lowercase, numbers and special
+            characters
           </p>
 
           <button

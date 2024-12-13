@@ -1,4 +1,3 @@
-
 import React from "react";
 import styles from "./details.module.css";
 import { inter, nunito, ubuntu } from "app/fonts/fonts";
@@ -7,6 +6,7 @@ import { IoPlay } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import Image from "next/image";
 import Link from "next/link";
+import { handleAddToWatchlist } from "../api/AddToWatchlist";
 
 export default async function Page({
   params,
@@ -71,14 +71,14 @@ export default async function Page({
     <div style={{ background: "#15141F" }}>
       <section className={styles.hero}>
         <div className={styles.imageBox}>
-           <iframe
-              width={"100%"}
-              height={"100%"}
-              src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1`}
-              title={movie.title}
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-            ></iframe>
+          <iframe
+            width={"100%"}
+            height={"100%"}
+            src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1`}
+            title={movie.title}
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          ></iframe>
           {/* // <Image
           //   src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           //   alt={movie.title}
@@ -107,6 +107,15 @@ export default async function Page({
               style={{ color: "#000", maxWidth: "120px" }}
               variant="secondary"
               size="small"
+              onClick={() =>
+                handleAddToWatchlist({
+                  tmdbId: movie.id,
+                  title: movie.title,
+                  description: movie.overview,
+                  genres: movie.media_type,
+                  year: movie.release_date.slice(0, 4),
+                })
+              }
             >
               <FaPlus /> Watchlist
             </Button>
@@ -167,36 +176,34 @@ export default async function Page({
       <div className={styles.more}>
         <h5 className={inter.className}>More like this</h5>
         <div className={styles.moreGrid}>
-          {recommendations.results
-            .slice(0, 6)
-            .map(
-              (
-                data: {
-                  backdrop_path: string;
-                  title: string;
-                  id: number;
-                },
-                idx: number
-              ) => {
-                const { backdrop_path, title, id } = data;
+          {recommendations.results.slice(0, 6).map(
+            (
+              data: {
+                backdrop_path: string;
+                title: string;
+                id: number;
+              },
+              idx: number
+            ) => {
+              const { backdrop_path, title, id } = data;
 
-                return (
-                  <Link href={`/dashboard/${id}`} key={idx}>
-                    <div className={inter.className}>
-                      <Image
-                        className={styles.moreImg}
-                        src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
-                        alt="movie_title"
-                        height={100}
-                        width={100}
-                        sizes="100%"
-                      />
-                      <h5 id={styles.title}>{title}</h5>
-                    </div>
-                  </Link>
-                );
-              }
-            )}
+              return (
+                <Link href={`/dashboard/${id}`} key={idx}>
+                  <div className={inter.className}>
+                    <Image
+                      className={styles.moreImg}
+                      src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+                      alt="movie_title"
+                      height={100}
+                      width={100}
+                      sizes="100%"
+                    />
+                    <h5 id={styles.title}>{title}</h5>
+                  </div>
+                </Link>
+              );
+            }
+          )}
         </div>
       </div>
     </div>

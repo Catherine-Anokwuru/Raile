@@ -31,14 +31,16 @@ const Login: React.FC<{
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://movie-app-server-4bhs.onrender.com/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(

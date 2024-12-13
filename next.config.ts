@@ -20,11 +20,11 @@ const nextConfig: NextConfig = {
   //   return [
   //     {
   //       source: "/auth/:path*",
-  //       destination: "http://localhost:5000/auth/:path*",
+  //       destination: "https://movie-app-server-4bhs.onrender.com/auth/:path*",
   //     },
   //     {
   //       source: "/:userId/:path*",
-  //       destination: "http://localhost:5000/:userId/:path*",
+  //       destination: "https://movie-app-server-4bhs.onrender.com/:userId/:path*",
   //     },
   //   ];
   // },
