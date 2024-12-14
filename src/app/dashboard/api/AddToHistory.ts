@@ -1,16 +1,16 @@
-interface AddToWL {
+interface AddToHistory {
   tmdbId: number;
   title: string;
   description: string;
-  genres: string[] | string;
+  genres: string[] ;
   year: string;
 }
 
-export const handleAddToWatchlist = async (payload: AddToWL) => {
+export const handleAddToHistory = async (payload: AddToHistory) => {
   const userId = localStorage.getItem("userId");
   try {
     const response = await fetch(
-      `https://latin-adoree-raile-d2418ca2.koyeb.app/watchlist/${userId}/add-movie`,
+      `https://latin-adoree-raile-d2418ca2.koyeb.app/history/${userId}/add-movie`,
       {
         method: "POST",
         headers: {
@@ -22,23 +22,22 @@ export const handleAddToWatchlist = async (payload: AddToWL) => {
 
     if (!userId) {
       console.error(
-        "User ID is required to add a movie to the watchlist."
+        "User ID is required to add a movie to the history."
       );
       return;
     }
     if (!response.ok) {
       const errorDetails = await response.json();
       throw new Error(
-        `Failed to add movie to watchlist: ${response.status} ${response.statusText}. Details: ${errorDetails.message}`
+        `Failed to add movie to history: ${response.status} ${response.statusText}. Details: ${errorDetails.message}`
       );
     }
 
     const data = await response.json();
-    console.log("Movie added to watchlist", data);
-    alert("Movie added to watchlist");
+    console.log("Movie added to history", data);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    console.error("Add to watchlist failed:", error.message);
+    console.error("Add to history failed:", error.message);
   }
 };

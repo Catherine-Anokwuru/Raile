@@ -13,7 +13,7 @@ export const getWatchListMovies = async () => {
   const userId = localStorage.getItem("userId");
 
   try {
-    let watchlist: IMovie[] | null = null;
+    let watchlist: IMovie[] = [];
     let error: Error | null = null;
 
     const res = await fetch(
@@ -27,12 +27,12 @@ export const getWatchListMovies = async () => {
     );
     const data = await res.json();
     if (res.status == 200) {
-      watchlist = data.watchlist.movies;
+      watchlist = data.watchlistMovies;
       return { watchlist, error };
     }
     error = new Error(data.message);
     return { watchlist, error };
   } catch (error) {
-    return { watchlist: null, error };
+    return { watchlist: [], error };
   }
 };

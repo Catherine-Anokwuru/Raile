@@ -1,12 +1,16 @@
+/* eslint-disable @next/next/no-async-client-component */
+"use client";
+
 import React from "react";
 import styles from "./details.module.css";
 import { inter, nunito, ubuntu } from "app/fonts/fonts";
 import Button from "components/Button";
-import { IoPlay } from "react-icons/io5";
+// import { IoPlay } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import Image from "next/image";
 import Link from "next/link";
 import { handleAddToWatchlist } from "../api/AddToWatchlist";
+// import { handleAddToHistory } from "../api/AddToHistory";
 
 export default async function Page({
   params,
@@ -67,6 +71,14 @@ export default async function Page({
 
   console.log(trailerVideo);
 
+    // handleAddToHistory({
+    //   tmdbId: movie.id,
+    //   title: movie.title,
+    //   description: movie.overview,
+    //   genres: movie.media_type,
+    //   year: movie.release_date.slice(0, 4),
+    // });
+
   return (
     <div style={{ background: "#15141F" }}>
       <section className={styles.hero}>
@@ -100,9 +112,9 @@ export default async function Page({
           <h1 className={ubuntu.className}>{movie.title}</h1>
 
           <div className={styles.buttons}>
-            <Button style={{ maxWidth: "120px" }} size="small">
+            {/* <Button style={{ maxWidth: "120px" }} size="small">
               <IoPlay /> Play
-            </Button>
+            </Button> */}
             <Button
               style={{ color: "#000", maxWidth: "120px" }}
               variant="secondary"

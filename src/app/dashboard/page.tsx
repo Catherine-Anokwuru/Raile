@@ -1,10 +1,10 @@
 import React from "react";
 import Banner from "./Banner";
-import WatchList from "./Watchlist";
+// import WatchList from "./Watchlist";
 // import Watching from "./Watching";
 import Navbar from "components/Navbar";
 import TrendingMovie from "./TrendingMovie";
-import Recommended from "./Recommended";
+// import Recommended from "./Recommended";
 import Popular from "./Popular";
 import TopRated from "./TopRated";
 
@@ -15,8 +15,8 @@ const Dashboard: React.FC = () => {
       <Banner />
       <TrendingMovie />
       {/* <Watching /> */}
-      <Recommended />
-      <WatchList />
+      {/* <Recommended /> */}
+      {/* <WatchList /> */}
       <TopRated />
       <Popular />
     </div>

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles/Recommended.module.css";
 import { getWatchListMovies } from "./api/getWatchlist";
 
-interface IMovie {
+interface IMovies {
   imdbId: string;
   title: string;
   year: number;
@@ -19,16 +19,16 @@ const WatchList: React.FC = () => {
 
 
     const [, setLoading] = useState(true);
-    const [movies, setMovies] = useState<IMovie[]>([]);
-    // const [currentPage, ] = useState(1);
-    // const containerRef = useRef<HTMLDivElement>(null);
+    const [movies, setMovies] = useState<IMovies[]>([]);
 
     useEffect(() => {
       const fetchData = async () => {
         setLoading(true);
         try {
           const data = await getWatchListMovies();
-          setMovies((prevMovies) => [...prevMovies, ...(data.watchlist ?? [])]);
+          setMovies((prevMovies) => [...prevMovies, ...data.watchlist]);
+          console.log(data.watchlist);
+          // setMovies(data.watchlist)
           console.log(movies);
 
         } catch (error) {

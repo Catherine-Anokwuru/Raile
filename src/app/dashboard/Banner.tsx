@@ -9,6 +9,8 @@ import { IoPlay } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import { fetchTrendingMovie } from "./api/fetchTrendingMovie";
 import { handleAddToWatchlist } from "./api/AddToWatchlist";
+import Link from "next/link";
+import { handleAddToHistory } from "./api/AddToHistory";
 
 // interface BannerProps {
 //   id: number;
@@ -31,7 +33,7 @@ const Banner: React.FC = () => {
       try {
         const data = await fetchTrendingMovie(1);
         setBanner(data[2]);
-        // console.log(data[2]);
+        console.log(data[2]);
       } catch (error) {
         console.log(error);
       }
@@ -40,6 +42,9 @@ const Banner: React.FC = () => {
     fetchData();
   }, []);
   // console.log(banner);
+
+  const genre: string[] = [];
+  genre.push(banner.media_type);
 
   return (
     <section className={styles.hero}>
@@ -71,21 +76,35 @@ const Banner: React.FC = () => {
         </p>
         <p className={styles.description}>{banner.overview}</p>
         <div className={styles.buttons}>
-          <Button style={{ width: "50%", maxWidth: "120px" }}>
-            <IoPlay /> Play
+          <Button
+            style={{ width: "50%", maxWidth: "120px" }}
+            onClick={() =>
+              handleAddToHistory({
+                tmdbId: banner.id,
+                title: banner.title,
+                description: banner.overview,
+                genres: genre,
+                year: banner.release_date.slice(0, 4),
+              })
+            }
+          >
+            <Link href={`/dashboard/${banner.id}`}>
+              <IoPlay /> Play
+            </Link>
           </Button>
+
           <Button
             style={{ width: "50%", color: "#000", maxWidth: "120px" }}
             variant="secondary"
-            onClick={() =>
+            onClick={() => {
               handleAddToWatchlist({
                 tmdbId: banner.id,
                 title: banner.title,
                 description: banner.overview,
-                genres: banner.media_type,
+                genres: genre,
                 year: banner.release_date.slice(0, 4),
-              })
-            }
+              });
+            }}
           >
             <FaPlus /> Watchlist
           </Button>
