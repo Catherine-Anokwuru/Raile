@@ -24,6 +24,7 @@ const Banner: React.FC = () => {
     id: 1,
     title: "",
     backdrop_path: "",
+    poster_path: "",
     overview: "",
     media_type: "",
     release_date: "",
@@ -102,6 +103,7 @@ const Banner: React.FC = () => {
                 title: banner.title,
                 description: banner.overview,
                 genres: genre,
+                poster_path: banner.poster_path,
                 year: banner.release_date.slice(0, 4),
               });
             }}

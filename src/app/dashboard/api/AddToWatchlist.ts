@@ -3,6 +3,7 @@ interface AddToWL {
   title: string;
   description: string;
   genres: string[] | string;
+  poster_path: string;
   year: string;
 }
 

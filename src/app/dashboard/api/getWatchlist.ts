@@ -1,11 +1,11 @@
 interface IMovie {
-  imdbId: string;
+  tmdbId: string;
   title: string;
   year: number;
-  rating?: string;
+  poster_path: string;
   description?: string;
   genre?: string[];
-  image: string;
+  image?: string;
   imdb_link?: string;
 }
 

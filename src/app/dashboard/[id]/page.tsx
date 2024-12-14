@@ -125,6 +125,7 @@ export default async function Page({
                   title: movie.title,
                   description: movie.overview,
                   genres: movie.media_type,
+                  poster_path: movie.backdrop_path,
                   year: movie.release_date.slice(0, 4),
                 })
               }
@@ -191,20 +192,21 @@ export default async function Page({
           {recommendations.results.slice(0, 6).map(
             (
               data: {
-                backdrop_path: string;
+                // backdrop_path: string;
+                poster_path: string;
                 title: string;
                 id: number;
               },
               idx: number
             ) => {
-              const { backdrop_path, title, id } = data;
+              const { poster_path, title, id } = data;
 
               return (
                 <Link href={`/dashboard/${id}`} key={idx}>
                   <div className={inter.className}>
                     <Image
                       className={styles.moreImg}
-                      src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+                      src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                       alt="movie_title"
                       height={100}
                       width={100}
